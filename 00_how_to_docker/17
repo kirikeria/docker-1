@@ -1,0 +1,5 @@
+# Display all the currently active containers on the Char virtual machine.
+
+docker ps
+
+# https://stackoverflow.com/questions/16840409/how-to-list-containers-in-docker

@@ -1,0 +1,6 @@
+# 08. Launch a shell from an alpine container, and make sure that you can interact directly with the container via your terminal, and that the container deletes itself once the shell’s execution is done.
+
+docker run -it --rm alpine
+
+# docker run --help
+# https://stackoverflow.com/questions/35689628/starting-a-shell-in-the-docker-alpine-container

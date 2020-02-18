@@ -1,0 +1,7 @@
+# 04. Get the hello-world container from the Docker Hub, where it’s available.
+
+docker pull hello-world
+
+# docker run runs an instance of a container. In order to do that it will pull all the required images needed to run the container (i.e. base images) in the background if they are not part of the local cache.
+#docker pull will fetch/pull an image from the docker registry.
+#https://stackoverflow.com/questions/55941881/docker-run-vs-pull
