@@ -1,0 +1,7 @@
+# 23. Create an overlay-type internal network that you will name overmind.
+ 
+docker network create -d overlay overmind
+ 
+# docker network ls
+# 'overlay' create a network that spans multiple Docker hosts each running an Engine.
+# https://docs.docker.com/engine/reference/commandline/network_create/

@@ -1,0 +1,6 @@
+# 20. Create a local swarm, the Char virtual machine should be its manager.
+
+docker swarm init --advertise-addr $(docker-machine ip Char)
+
+# https://docs.docker.com/get-started/swarm-deploy/ 
+# --advertise-addr : Advertised address (format: <ip|interface>[:port])
