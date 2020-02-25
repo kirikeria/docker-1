@@ -1,0 +1,16 @@
+- Install brew with this command
+> rm -rf $HOME/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew && echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
+2. Install docker and docker-machine
+> brew install docker docker-machine
+3. Check docker version
+> docker --version
+4. Create symbolic link
+cd ~ && rm -rf Library/com.docker.docker
+mkdir /goinfre/docker
+ln -s /goinfre/docker Library/com.docker.docker
+
+- To use docker command on 42 school computers
+
+eval "$(docker-machine env NAME)"
+
+# https://docker-py.readthedocs.io/en/1.8.0/machine/
