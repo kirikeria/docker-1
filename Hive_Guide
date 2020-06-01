@@ -1,16 +1,36 @@
-- Install brew with this command
-> rm -rf $HOME/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew && echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
-2. Install docker and docker-machine
-> brew install docker docker-machine
-3. Check docker version
-> docker --version
-4. Create symbolic link
+- Docker Installation guide (42 school)
+
+	- Install brew
+
+$ rm -rf $HOME/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew && echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
+	- Install Virtualbox (Skip this part if you have Virtualbox installed)
+$ brew cask install Virtualbox
+-> need password
+-> possibly need to address System Preference setting
+$ docker-machine create --driver Virtualbox default
+
+	- Install docker and docker-machine
+$ brew install docker docker-machine
+
+	- Check docker version
+$ docker --version
+
+	- Create symbolic link
 cd ~ && rm -rf Library/com.docker.docker
 mkdir /goinfre/docker
 ln -s /goinfre/docker Library/com.docker.docker
 
-- To use docker command on 42 school computers
+	- For the last process to use docker command on 42 school computers
 
-eval "$(docker-machine env NAME)"
+$ docker-machine env default
+$ eval "$(docker-machine env default)"
+$ docker run hello-world
 
+
+Resources:
+# https://medium.com/@yutafujii_59175/a-complete-one-by-one-guide-to-install-docker-on-your-mac-os-using-homebrew-e818eb4cfc3
+# http://guides.rubyonrails.org/getting_started.html
+# https://github.com/amki/docker-teamspeak-client
+# https://gitlab.com/gitlab-org/omnibus-gitlab/issues/3133
+# https://www.packtpub.com/mapt/book/application_development/9781783986842/2/ch02lvl1sec20/adding-your-ssh-key-to-gitlab
 # https://docker-py.readthedocs.io/en/1.8.0/machine/
