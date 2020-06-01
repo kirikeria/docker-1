@@ -3,11 +3,6 @@
 	- Install brew
 
 $ rm -rf $HOME/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew && echo 'export PATH=$HOME/.brew/bin:$PATH' >> $HOME/.zshrc && source $HOME/.zshrc && brew update
-	- Install Virtualbox (Skip this part if you have Virtualbox installed)
-$ brew cask install Virtualbox
--> need password
--> possibly need to address System Preference setting
-$ docker-machine create --driver Virtualbox default
 
 	- Install docker and docker-machine
 $ brew install docker docker-machine
@@ -15,10 +10,19 @@ $ brew install docker docker-machine
 	- Check docker version
 $ docker --version
 
+	- Install Virtualbox and make docker-machine (Skip this part if you have Virtualbox installed)
+$ brew cask install Virtualbox
+-> need password
+-> possibly need to address System Preference setting
+$ docker-machine create --driver Virtualbox default
+
+	- Install docker-machine
+$ docker-machine create default
+
 	- Create symbolic link
 cd ~ && rm -rf Library/com.docker.docker
-mkdir /goinfre/docker
-ln -s /goinfre/docker Library/com.docker.docker
+mkdir /goinfre/hyshin/docker
+ln -s /goinfre/hyshin/docker Library/com.docker.docker
 
 	- For the last process to use docker command on 42 school computers
 
@@ -26,7 +30,17 @@ $ docker-machine env default
 $ eval "$(docker-machine env default)"
 $ docker run hello-world
 
+	- * If you face problems with starting docker-machine
+
+$ docker-machine restart default
+$ eval "$(docker-machine env default)"
+$ docker-machine regenerate-certs default
+$ eval "$(docker-machine env default)"
+
 $ If you get errors, try to reopen the terminals
+$ If Docker machine "default" already exisists, try delete it and create again
+docker-machine rm default
+
 Resources:
 # https://medium.com/@yutafujii_59175/a-complete-one-by-one-guide-to-install-docker-on-your-mac-os-using-homebrew-e818eb4cfc3
 # http://guides.rubyonrails.org/getting_started.html
