@@ -10,19 +10,18 @@ $ brew install docker docker-machine
 	- Check docker version
 $ docker --version
 
-	- Install Virtualbox and make docker-machine (Skip this part if you have Virtualbox installed)
-$ brew cask install Virtualbox
--> need password
--> possibly need to address System Preference setting
+	- Install docker-machine
 $ docker-machine create --driver Virtualbox default
 
-	- Install docker-machine
-$ docker-machine create default
-
 	- Create symbolic link
-cd ~ && rm -rf Library/com.docker.docker
-mkdir /goinfre/hyshin/docker
-ln -s /goinfre/hyshin/docker Library/com.docker.docker
+
+$ !REMEMBER To turn off docker before creating a symbolic links or restart docker after change value!
+
+$ ln -s /goinfre/hyshin ~/goinfre 
+$ mv ~/.docker ~/goinfre
+$ mv ~/VirtualBox\ VMs ~/goinfre
+$ ln -s ~/goinfre/.docker ~/.docker
+$ ln -s ~/goinfre/VirtualBox\ VMs ~/VirtualBox\ VMs
 
 	- For the last process to use docker command on 42 school computers
 
@@ -37,9 +36,17 @@ $ eval "$(docker-machine env default)"
 $ docker-machine regenerate-certs default
 $ eval "$(docker-machine env default)"
 
-$ If you get errors, try to reopen the terminals
 $ If Docker machine "default" already exisists, try delete it and create again
 docker-machine rm default
+
+	- For exercise 01, ex02
+
+$ First run this command ft-rails folder
+$ docker build -t ft-rails:on-build .
+$ Then go back using cd ..
+$ docker build -t ex02 .
+$ docker build -t ex02 . && docker run -it --rm -p 3000:3000 ex02
+
 
 Resources:
 # https://medium.com/@yutafujii_59175/a-complete-one-by-one-guide-to-install-docker-on-your-mac-os-using-homebrew-e818eb4cfc3
