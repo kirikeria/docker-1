@@ -39,6 +39,11 @@ $ eval "$(docker-machine env default)"
 $ If Docker machine "default" already exisists, try delete it and create again
 docker-machine rm default
 
+	- To run Dockerfile 	
+$	Go inside the folder that contains Dockerfile
+$	docker build -t ex** . (. is for 'from current folder')
+$	docker run -it --rm ex**
+
 	- For exercise 01, ex02
 
 $ First run this command ft-rails folder
