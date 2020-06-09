@@ -1,20 +1,22 @@
-FROM ruby
+FROM ubuntu
 
 MAINTAINER hyshin <hyshin@student.hive.fi>
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install nodejs -y && \
-    gem install rails && \
-    mkdir -p /opt/app
-#make a folder, -p - make another folder inside of a new folder, /opt/app - name of the folders
+RUN apt-get update -y && apt-get -y upgrade && apt-get -y install wget openssh-server \
+	ca-certificates postfix
 
-ONBUILD WORKDIR /opt/app
-ONBUILD ADD . /opt/app
-ONBUILD EXPOSE 3000
-ONBUILD RUN bundle install && rake db:from && rake db:to
+RUN wget https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh && \
+	chmod 777 ./script.deb.sh && \
+	./script.deb.sh
 
-#docker build -t ft-rails:on-build .
-#docker run -it --rm -v "$PWD":/usr/src/app -w /usr/src/app rails:4 rails new --skip-bundle app
-#docker build . -t ft-rails
-#docker run -d -p 3000:3000 ft-rails
+RUN apt-get install -y tzdata gitlab-ce
+
+EXPOSE 443 80 22
+
+RUN gitlab-ctl reconfigure
+
+# Build Image
+# docker build -t ex03 .
+
+# Create Container
+# docker run --name ex03 -it --rm -p 80:80 -p 22:22 -p 443:443 --privileged ex03
