@@ -23,5 +23,5 @@ ENTRYPOINT sh ts3server_minimal_runscript.sh
 # http://dl.4players.de/ts/releases/
 # https://www.tecmint.com/18-tar-command-examples-in-linux/
 # https://forum.teamspeak.com/threads/132611-Install-teamspeak-3-server-on-Debian-8
-#docker build -t ex01. 
-#docker run -it --rm -p 9987:9987/udp -p 10011:10011 -p 30033:30033 ex01
+# docker build -t ex01. 
+# docker run -it --rm -p 9987:9987/udp -p 10011:10011 -p 30033:30033 ex01
